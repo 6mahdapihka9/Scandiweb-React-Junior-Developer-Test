@@ -1,4 +1,4 @@
-import './App.css';
+import './App.scss';
 import CategoriesList from "./CategoriesList/CategoriesList";
 import React, {useEffect} from "react";
 import {Header} from "./Header/Header";
