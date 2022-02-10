@@ -1,9 +1,9 @@
 import React from "react";
+import './Header.scss';
 
-export class Header extends React.Component{
+export class Header extends React.Component {
   constructor(props) {
     super(props);
-
   }
 
   componentDidMount() {
@@ -13,7 +13,9 @@ export class Header extends React.Component{
   render() {
     return (
         <header>
-
+          {
+            this.props.categories.map(c => <p key={c.name}>{c.name}</p>)
+          }
         </header>
     );
   }
