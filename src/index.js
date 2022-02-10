@@ -5,7 +5,7 @@ import App from './components/App';
 import reportWebVitals from './reportWebVitals';
 //Redux
 import {Provider} from 'react-redux';
-import store from './helpers/redux.store.js';
+import store from './redux/redux.store.js';
 //GraphQL
 import {ApolloProvider} from "@apollo/client";
 import {client} from "./helpers/apollo.client";
