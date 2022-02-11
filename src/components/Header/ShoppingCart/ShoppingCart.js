@@ -1,7 +1,7 @@
 import React from "react";
-import './Panels.scss';
+import './ShoppingCart.scss';
 
-export class Panels extends React.Component {
+export class ShoppingCart extends React.Component {
   constructor(props) {
     super(props);
   }
