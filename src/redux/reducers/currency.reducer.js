@@ -1,6 +1,7 @@
 import { CHANGE_CURRENCY } from "../action.types";
 
 const initialState = {
+  __typename: 'Currency',
   label: "USD",
   symbol: "$"
 }
