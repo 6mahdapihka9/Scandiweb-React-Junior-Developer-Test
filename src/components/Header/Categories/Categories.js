@@ -13,6 +13,10 @@ export class Categories extends React.Component {
   render() {
     return (
         <>
+          {
+            this.props.categories.map(c => c
+            )
+          }
         </>
     );
   }

@@ -1,0 +1,25 @@
+.cart-button{
+  margin: 12px;
+  width: fit-content;
+  position: relative;
+  display: flex;
+}
+
+.products-amount{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 20px;
+  height: 20px;
+  color: white;
+  background-color: black;
+  border-radius: 50%;
+  position: absolute;
+  top: -10px;
+  right: -10px;
+}
+//.icon-shopping-cart{
+//  width: 36px;
+//  height: 36px;
+//  fill: blue;
+//}

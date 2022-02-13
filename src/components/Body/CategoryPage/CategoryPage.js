@@ -1,7 +1,8 @@
 import React from "react";
 import './CategoryPage.scss';
+import { connect } from "react-redux";
 
-export class CategoryPage extends React.Component {
+class CategoryPage extends React.Component {
   constructor(props) {
     super(props);
 
@@ -14,7 +15,11 @@ export class CategoryPage extends React.Component {
   render() {
     return (
         <>
+          {
+            this.props.category
+          }
         </>
     );
   }
 }
+export default connect()(CategoryPage)
