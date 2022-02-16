@@ -1,7 +1,7 @@
 import React from "react";
 import './Header.scss';
 import ShoppingCartButton from "./ShoppingCartButton/ShoppingCartButton";
-import {NavBar} from "./NavBar/NavBar";
+import NavBar from "./NavBar/NavBar";
 import CurrencySelector from "./CurrencySelector/CurrencySelector";
 
 export class Header extends React.Component {

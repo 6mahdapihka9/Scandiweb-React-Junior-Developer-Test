@@ -12,7 +12,7 @@ class ShoppingCartButton extends React.Component {
 
   render() {
     return (
-        <div className={'cart-button'}>
+        <div className={'cart-button'} onClick={()=> console.log(this.props.cart)}>
           Cart
           {
             //todo add onclick handler to show cart's info
@@ -35,7 +35,8 @@ class ShoppingCartButton extends React.Component {
 }
 
 const mapStateFromProps = (state) => ({
-  productsAmount: state.cart.length
+  productsAmount: state.cart.length,
+  cart: state.cart
 })
 
 export default connect(mapStateFromProps)(ShoppingCartButton)
