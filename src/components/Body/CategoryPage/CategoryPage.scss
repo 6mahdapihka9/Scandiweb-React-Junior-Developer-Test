@@ -19,7 +19,6 @@ main{
   padding: 80px;
 }
 section{
-  background-color: aquamarine;//todo clean later
   box-sizing: border-box;
   margin: 20px;
   padding: 15px;
@@ -27,12 +26,11 @@ section{
   flex-direction: column;
   flex-basis: calc(33% - 2*20px);
   transition: all .5s ease-in-out;
+  &:hover{
+    box-shadow: 0 0 20px #555;
+  }
 }
-section:hover{
-  box-shadow: 0 0 20px #555;
-  //transform: scale(1.05);
-}
-@media screen and (max-width: 1000px) {
+@media screen and (max-width: 1200px) {
   .container {
     padding: 40px;
   }
@@ -96,6 +94,9 @@ section:hover{
   align-items: center;
   visibility: hidden;
   border: none;
+  &:active{
+    filter: brightness(80%);
+  }
 }
 .out-of-stock .add-to-cart-button{
   display: none;
