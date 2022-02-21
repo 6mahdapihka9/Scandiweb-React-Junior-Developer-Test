@@ -1,20 +1,33 @@
 import React from "react";
 import './ProductPage.scss';
+import {Query} from "@apollo/client/react/components";
+import {GET_PRODUCT} from "../../../constants/apolloQueries/queries";
+import {withRouter} from "../../../hooks/withRouter";
+import ProductComponent from "./ProductComponent";
 
-export class ProductPage extends React.Component {
+class ProductPage extends React.Component {
   constructor(props) {
     super(props);
-
-  }
-
-  componentDidMount() {
-
   }
 
   render() {
     return (
-        <>
-        </>
+        <main>
+          <div className={'container'}>
+            <Query query={GET_PRODUCT()} variables={{id: this.props.params.productID}}>
+              {({loading, error, data}) => {
+                if (loading) return <div className={'loader'}>Loading...</div>
+
+                if (error) return <div className={'error'}>An Error has occurred! {error.message}</div>
+
+                const {product} = data;
+                return <ProductComponent product={product}/>
+              }}
+            </Query>
+          </div>
+        </main>
     );
   }
 }
+
+export default withRouter(ProductPage)
