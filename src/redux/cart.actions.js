@@ -1,11 +1,26 @@
-import {ADD_TO_CART, CHANGE_PRODUCT_AMOUNT, CHANGE_PRODUCT_ATTRIBUTE} from "./action.types";
+import {
+  ADD_PRODUCT_TO_CART,
+  CHANGE_PRODUCTS_AMOUNT,
+  CHANGE_PRODUCTS_ATTRIBUTE,
+  REMOVE_PRODUCT_FROM_CART
+} from "./action.types";
 
-export const changeProductAmount = (productID, attributes, amount) => ({
-  type: CHANGE_PRODUCT_AMOUNT,
-  payload: { productID, attributes, amount }
-});
+export const addProductToCartAction = (productID, attributes) => ({
+  type:  ADD_PRODUCT_TO_CART,
+  payload: {productID, attributes}
+})
 
-export const changeProductAttributes = (productID, previousAttributes, attributes) => ({
-  type: CHANGE_PRODUCT_ATTRIBUTE,
-  payload: { productID, previousAttributes, attributes }
-});
+export const changeProductsAmountAction = (id, amount) => ({
+  type:  CHANGE_PRODUCTS_AMOUNT,
+  payload: {id, amount}
+})
+
+export const changeProductsAttributeAction = (id, attributeName, attributeValue) => ({
+  type:  CHANGE_PRODUCTS_ATTRIBUTE,
+  payload: {id, attributeName, attributeValue}
+})
+
+export const removeProductFromCartAction = id => ({
+  type:  REMOVE_PRODUCT_FROM_CART,
+  payload: {id}
+})
