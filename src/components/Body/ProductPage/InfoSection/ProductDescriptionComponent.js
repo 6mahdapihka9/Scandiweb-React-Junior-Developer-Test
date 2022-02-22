@@ -1,7 +1,7 @@
 import React from "react";
 import '../ProductPage.scss';
 import {connect} from "react-redux";
-import {changeProductAmount} from "../../../../redux/cart.actions";
+import {addProductToCartAction} from "../../../../redux/cart.actions";
 import AttributeComponent from "./AttributeComponent";
 import {v4} from "uuid";
 import getDefaultAttributes from "../../../../helpers/getDefaultAttributes";
@@ -15,25 +15,17 @@ class ProductDescriptionComponent extends React.Component {
     }
   }
 
-  addToCartHandler = (id, e) => {
-    e.stopPropagation();
-    e.preventDefault();
-    this.props.onAddToCart(id, this.state.chosenAttributes)
-  }
-
   changeAttributeHandler = (id, value, e) => {
-    e.stopPropagation();
     e.preventDefault();
-
     this.setState({
-      chosenAttributes: this.state.chosenAttributes.map(
-          a => (a.id === id)? {...a, value} : a
-      )
-    })
+      chosenAttributes: {
+        ...this.state.chosenAttributes,
+        [id]: value
+      }
+    });
   }
 
   render() {
-
     return (
         <div className={'product-info'}>
           <h2>{this.props.name}</h2>
@@ -46,7 +38,7 @@ class ProductDescriptionComponent extends React.Component {
                   <AttributeComponent
                       key={v4()}
                       onChangeAttribute={this.changeAttributeHandler}
-                      chosenAttribute={this.state.chosenAttributes.filter(ca => ca.id === a.id)[0]}
+                      chosenAttributeValue={this.state.chosenAttributes[a.id]}
                       {...a}
                   />
               )
@@ -56,11 +48,11 @@ class ProductDescriptionComponent extends React.Component {
           <PriceInfo prices={this.props.prices}/>
 
           <button
-              className={'add-to-cart'}
-              onClick={e => this.addToCartHandler(this.props.id, e)}
+              className={'add-to-cart button-pointer'}
+              onClick={e => this.props.onAddToCart(this.props.id, this.state.chosenAttributes, e)}
               disabled={!this.props.inStock}
           >
-            {!this.props.inStock? 'OUT OF STOCK' : 'ADD TO CART'}
+            {this.props.inStock? 'ADD TO CART' : 'OUT OF STOCK'}
           </button>
 
           <div
@@ -73,7 +65,11 @@ class ProductDescriptionComponent extends React.Component {
 }
 
 const mapDispatchToProps = dispatch => ({
-  onAddToCart: (id, attributes) => dispatch(changeProductAmount(id, attributes, 1))
+  onAddToCart: (productID, attributes, e) => {
+    e.stopPropagation();
+    e.preventDefault();
+    dispatch(addProductToCartAction(productID, attributes))
+  }
 })
 
 export default connect(null, mapDispatchToProps)(ProductDescriptionComponent);

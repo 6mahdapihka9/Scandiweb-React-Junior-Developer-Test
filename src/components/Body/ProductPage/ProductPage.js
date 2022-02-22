@@ -12,20 +12,18 @@ class ProductPage extends React.Component {
 
   render() {
     return (
-        <main>
-          <div className={'container'}>
-            <Query query={GET_PRODUCT()} variables={{id: this.props.params.productID}}>
-              {({loading, error, data}) => {
-                if (loading) return <div className={'loader'}>Loading...</div>
+        <div className={'container'}>
+          <Query query={GET_PRODUCT()} variables={{id: this.props.params.productID}}>
+            {({loading, error, data}) => {
+              if (loading) return <div className={'loader'}>Loading...</div>
 
-                if (error) return <div className={'error'}>An Error has occurred! {error.message}</div>
+              if (error) return <div className={'error'}>An Error has occurred! {error.message}</div>
 
-                const {product} = data;
-                return <ProductComponent product={product}/>
-              }}
-            </Query>
-          </div>
-        </main>
+              const {product} = data;
+              return <ProductComponent product={product}/>
+            }}
+          </Query>
+        </div>
     );
   }
 }

@@ -1,10 +1,12 @@
 import React from "react";
 import '../ProductPage.scss';
 
-class ImagesSection extends React.Component {
+class ImagesSection extends React.PureComponent {
   constructor(props) {
     super(props);
-    this.state = { chosenImage: 0 }
+    this.state = {
+      chosenImage: 0
+    }
   }
 
   render() {

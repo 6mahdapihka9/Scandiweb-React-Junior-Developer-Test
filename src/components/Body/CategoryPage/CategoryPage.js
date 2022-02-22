@@ -13,9 +13,9 @@ class CategoryPage extends React.Component {
 
   render() {
     return (
-        <main>
-          <h1>{this.props.params.category}</h1>
-          <div className={'container'}>
+        <>
+          <h1 className={'title lighter-title'}>{this.props.params.category}</h1>
+          <div className={'container '}>
             <Query query={GET_CATEGORY()} variables={{title: this.props.params.category}}>
               {({loading, error, data}) => {
                 if (loading) return <div className={'loader'}>Loading...</div>
@@ -27,7 +27,7 @@ class CategoryPage extends React.Component {
               }}
             </Query>
           </div>
-        </main>
+        </>
     );
   }
 }
