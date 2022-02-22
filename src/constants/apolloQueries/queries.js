@@ -60,6 +60,7 @@ export const GET_PRODUCT = () => gql`
                     value
                     id
                 }
+                __typename @skip(if: true)
             }
             prices{
                 currency{
