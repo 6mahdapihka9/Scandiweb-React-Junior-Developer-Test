@@ -1,0 +1,14 @@
+.mini-cart-container{
+  padding: 20px;
+  background-color: #5ECE7B;
+  min-width: 150px;
+  min-height: 150px;
+  //min-height: fit-content;
+
+  //max-height: 50vh;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  transform: translate(0, 100%);
+
+}

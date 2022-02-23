@@ -3,13 +3,12 @@ import './Header.scss';
 import ShoppingCartButton from "./ShoppingCartButton/ShoppingCartButton";
 import NavBar from "./NavBar/NavBar";
 import CurrencySelector from "./CurrencySelector/CurrencySelector";
+import MiniCart from "./MiniCart/MiniCart";
+import {connect} from "react-redux";
 
-export class Header extends React.Component {
+class Header extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      selectedTab: 'all'
-    }
   }
 
 
@@ -23,7 +22,14 @@ export class Header extends React.Component {
             <CurrencySelector/>
             <ShoppingCartButton/>
           </div>
+          {/*{this.props.miniCartVisibility && <MiniCart />}*/}
         </header>
     );
   }
 }
+
+const mapStateToProps = state => ({
+  miniCartVisibility: state.miniCartDisplay
+})
+
+export default connect(mapStateToProps)(Header)

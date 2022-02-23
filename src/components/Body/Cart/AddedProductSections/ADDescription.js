@@ -23,7 +23,6 @@ class ADDescription extends React.Component{
               amount={this.props.amount}
           />
 
-          {/*todo added attributes*/}
           <ADAttributeList
               attributes={this.props.attributes}
               id={this.props.id}

@@ -15,10 +15,10 @@ class NavBar extends React.Component {
         <>
           <Query query={GET_CATEGORIES()}>
             {({loading, error, data}) => {
-              if (loading)
-                return <p>Loading...</p>
-              if (error)
-                return <p>An Error has occurred! {error.message}</p>
+              if (loading) return <p>Loading...</p>
+
+              if (error) return <p>An Error has occurred! {error.message}</p>
+
               const {categories} = data;
               return (
                   <nav>
@@ -30,6 +30,8 @@ class NavBar extends React.Component {
                           {c.name}
                         </NavLink>
                     ))}
+                    {/*todo remove cart link*/}
+                    <NavLink to={'/cart'}>Cart</NavLink>
                   </nav>
               )
             }}

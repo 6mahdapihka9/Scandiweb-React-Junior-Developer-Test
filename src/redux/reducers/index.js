@@ -4,4 +4,4 @@ import currency from "./currency.reducer";
 import miniCartDisplay from "./minicart.reducer";
 
 export default combineReducers({ cart, currency, miniCartDisplay });
-//todo add chosen category reducer
+

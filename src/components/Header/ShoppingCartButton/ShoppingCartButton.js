@@ -3,40 +3,48 @@ import './ShoppingCartButton.scss';
 // import Logo from '../../../assets/shopping-cart-10925.svg';
 // import Icon from "./ShoppingCartIcon";
 import {connect} from "react-redux";
+import getProductsAmountFromCart from "../../../helpers/getProductsAmountFromCart";
+import {toggleMiniCart} from '../../../redux/minicart.actions';
+import miniCartDisplay from "../../../redux/reducers/minicart.reducer";
+import {withRouter} from "../../../hooks/withRouter";
+import ShoppingCartIcon from "../../icons/ShoppingCartIcon";
 
 class ShoppingCartButton extends React.Component {
   constructor(props) {
     super(props);
+  }
 
+  onViewBagClick = () => {
+    this.props.navigate('/cart')
   }
 
   render() {
     return (
-        <div className={'cart-button'} onClick={()=> console.log(this.props.cart)}>
-          Cart
-          {
-            //todo add onclick handler to show cart's info
-            this.props.productsAmount?
-                <div className={'products-amount'}>
-                  {this.props.productsAmount}
-                </div> :
-                null
-          }
+        <>
+          <button className={'mini-cart-button button-pointer'} onClick={this.props.onToggleMiniCart}>
+            {
+              //todo add onclick handler to show cart's info
+              this.props.productsAmount ?
+                  <div className={'products-amount'}>
+                    {this.props.productsAmount}
+                  </div> :
+                  null
+            }
+            <ShoppingCartIcon color={'black'}/>
+          </button>
 
-
-          {/*<img src={Logo} alt={'shopping cart button'}/>*/}
-          {/*<svg href={'../../../assets/shopping-cart-10925.svg'}/>*/}
-          {/*<Icon color={'blue'} size={40}/>*/}
-
-        </div>
+        </>
     );
   }
-
 }
 
 const mapStateFromProps = (state) => ({
-  productsAmount: state.cart.length,
+  productsAmount: getProductsAmountFromCart(state.cart),
+  miniCartVisibility: state.miniCartDisplay,
   cart: state.cart
 })
 
-export default connect(mapStateFromProps)(ShoppingCartButton)
+const mapDispatchFromProps = (dispatch) => ({
+  onToggleMiniCart: () => dispatch(toggleMiniCart())
+})
+export default withRouter(connect(mapStateFromProps, mapDispatchFromProps)(ShoppingCartButton))

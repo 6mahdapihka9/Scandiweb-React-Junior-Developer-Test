@@ -25,6 +25,7 @@ class CurrencySelector extends React.Component {
             const {currencies} = data;
             return (
                 <select
+                    className={'button-pointer'}
                     value={this.props.chosenCurrency.label}
                     onChange={(e) =>
                         this.props.onChangeCurrencyHandler(currencies.filter(c =>

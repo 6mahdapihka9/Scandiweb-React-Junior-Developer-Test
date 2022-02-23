@@ -16,7 +16,10 @@ class AttributeComponent extends React.Component {
               this.props.items.map(i =>
                   <div
                       key={v4()}
-                      className={`attribute-item attribute-${this.props.type}` + (i.value === this.props.chosenAttributeValue? ' attribute-checked' : '')}
+                      className={`attribute-item 
+                        attribute-${this.props.type} 
+                        ${i.value === this.props.chosenAttributeValue? ' attribute-checked' : ''}
+                        button-pointer`}
                       style={
                         !(this.props.type === 'text') ?
                             {backgroundColor: i.value} :
