@@ -7,19 +7,22 @@ import {connect} from "react-redux";
 class ADAmount extends React.Component{
   constructor(props) {
     super(props);
+    this.state = {
+      iconSize: this.props.isMiniCart? '8' : '15'
+    }
   }
 
   render() {
     return (
         <div className={'added-product-amount'}>
           <button className={'button-pointer'} onClick={() => this.props.onChangeAmount(1)}>
-            <PlusIcon width={'15'} height={'15'}/>
+            <PlusIcon width={this.state.iconSize} height={this.state.iconSize}/>
           </button>
 
           <h3>{this.props.amount}</h3>
 
           <button className={'button-pointer'} onClick={() => this.props.onChangeAmount(-1)}>
-            <MinusIcon width={'15'} height={'15'}/>
+            <MinusIcon width={this.state.iconSize} height={this.state.iconSize}/>
           </button>
         </div>
     )

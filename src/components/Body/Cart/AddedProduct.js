@@ -13,22 +13,26 @@ class AddedProduct extends React.Component {
   render() {
     return (
         <>
-          <hr/>
           <div className={'added-product-container'}>
-            <ADDescription {...this.props}/>
+            <ADDescription
+                isMiniCart={this.props.isMiniCart}
+                {...this.props}
+            />
 
             <ADAmount
+                isMiniCart={this.props.isMiniCart}
                 amount={this.props.amount}
                 id={this.props.id}
             />
 
-            <ADImageSet gallery={this.props.product.gallery}/>
+            <ADImageSet
+                isMiniCart={this.props.isMiniCart}
+                gallery={this.props.product.gallery}
+            />
           </div>
         </>
     );
   }
 }
 
-const mapDispatchToProps = dispatch => ({})
-
-export default connect(null, mapDispatchToProps)(AddedProduct)
+export default AddedProduct
