@@ -11,7 +11,6 @@ class Header extends React.Component {
     super(props);
   }
 
-
   render() {
     return (
         <header>
@@ -22,14 +21,16 @@ class Header extends React.Component {
             <CurrencySelector/>
             <ShoppingCartButton/>
           </div>
-          {/*{this.props.miniCartVisibility && <MiniCart />}*/}
+          {
+            this.props.isMiniCartVisible? <MiniCart /> : null
+          }
         </header>
     );
   }
 }
 
 const mapStateToProps = state => ({
-  miniCartVisibility: state.miniCartDisplay
+  isMiniCartVisible: state.miniCartDisplay
 })
 
 export default connect(mapStateToProps)(Header)

@@ -5,7 +5,7 @@ import CategoryPage from "./CategoryPage/CategoryPage";
 import ProductPage from "./ProductPage/ProductPage";
 import Cart from "./Cart/Cart";
 import {Navigate} from 'react-router'
-import {connect} from "react-redux";
+import ShadowBlock from "./ShadowBlock";
 
 class Body extends React.Component {
   constructor(props) {
@@ -21,13 +21,10 @@ class Body extends React.Component {
             <Route exact path="/cart" element={<Cart />}/>
             <Route exact path="/*" element={<Navigate to="/categories/all"/>}/>
           </Routes>
+          <ShadowBlock/>
         </main>
     );
   }
 }
 
-const mapStateToProps = state => ({
-  miniCartVisibility: state.miniCartDisplay
-})
-
-export default connect(mapStateToProps)(Body)
+export default Body
