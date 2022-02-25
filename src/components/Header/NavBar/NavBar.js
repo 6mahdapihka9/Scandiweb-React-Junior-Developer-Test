@@ -3,7 +3,6 @@ import './NavBar.scss';
 import {NavLink} from "react-router-dom";
 import {GET_CATEGORIES} from "../../../constants/apolloQueries/queries";
 import {Query} from "@apollo/client/react/components";
-import {withRouter} from '../../../hooks/withRouter';
 
 class NavBar extends React.Component {
   constructor(props) {
@@ -30,8 +29,6 @@ class NavBar extends React.Component {
                           {c.name}
                         </NavLink>
                     ))}
-                    {/*todo remove cart link*/}
-                    <NavLink to={'/cart'}>Cart</NavLink>
                   </nav>
               )
             }}
@@ -41,4 +38,4 @@ class NavBar extends React.Component {
   }
 }
 
-export default withRouter(NavBar);
+export default NavBar;
