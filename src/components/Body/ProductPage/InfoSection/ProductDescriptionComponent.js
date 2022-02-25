@@ -49,7 +49,7 @@ class ProductDescriptionComponent extends React.Component {
 
           <button
               className={'add-to-cart button-pointer'}
-              onClick={e => this.props.onAddToCart(this.props.id, this.state.chosenAttributes, e)}
+              onClick={e => this.props.onAddToCart(this.props.id, this.state.chosenAttributes, this.props.prices, e)}
               disabled={!this.props.inStock}
           >
             {this.props.inStock? 'ADD TO CART' : 'OUT OF STOCK'}
@@ -65,10 +65,10 @@ class ProductDescriptionComponent extends React.Component {
 }
 
 const mapDispatchToProps = dispatch => ({
-  onAddToCart: (productID, attributes, e) => {
+  onAddToCart: (productID, attributes, prices, e) => {
     e.stopPropagation();
     e.preventDefault();
-    dispatch(addProductToCartAction(productID, attributes))
+    dispatch(addProductToCartAction(productID, attributes, prices))
   }
 })
 

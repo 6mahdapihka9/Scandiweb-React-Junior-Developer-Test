@@ -9,14 +9,15 @@ import {v4} from 'uuid';
 export default function cart(state = [], action) {
   switch (action.type) {
     case ADD_PRODUCT_TO_CART: {
-      const {productID, attributes} = action.payload;
+      const {productID, attributes, prices} = action.payload;
       return [
         ...state,
         {
           id: v4(),
           amount: 1,
-          productID,
-          attributes
+          attributes,
+          prices,
+          productID
         }
       ]
     }
