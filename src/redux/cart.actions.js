@@ -5,9 +5,9 @@ import {
   REMOVE_PRODUCT_FROM_CART
 } from "./action.types";
 
-export const addProductToCartAction = (productID, attributes) => ({
+export const addProductToCartAction = (productID, attributes, prices) => ({
   type:  ADD_PRODUCT_TO_CART,
-  payload: {productID, attributes}
+  payload: {productID, attributes, prices}
 })
 
 export const changeProductsAmountAction = (id, amount) => ({

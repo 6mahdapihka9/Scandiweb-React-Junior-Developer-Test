@@ -1,11 +1,9 @@
 import React from "react";
 import './CurrencySelector.scss';
-import {Link} from "react-router-dom";
 import {Query} from "@apollo/client/react/components";
 import {GET_CURRENCIES} from "../../../constants/apolloQueries/queries";
 import {connect} from "react-redux";
-import currency from "../../../redux/reducers/currency.reducer";
-import {changeCurrency} from "../../../redux/currency.actions";
+import {changeCurrencyAction} from "../../../redux/currency.actions";
 
 class CurrencySelector extends React.Component {
   constructor(props) {
@@ -56,6 +54,6 @@ const mapStateToProps = state => ({
   chosenCurrency: state.currency
 })
 const mapDispatchToProps = dispatch => ({
-  onChangeCurrencyHandler: currency => dispatch(changeCurrency(currency))
+  onChangeCurrencyHandler: currency => dispatch(changeCurrencyAction(currency))
 })
 export default connect(mapStateToProps, mapDispatchToProps)(CurrencySelector)

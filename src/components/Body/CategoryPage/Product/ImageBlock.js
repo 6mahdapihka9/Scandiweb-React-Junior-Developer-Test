@@ -27,11 +27,9 @@ class ImageBlock extends React.Component{
             OUT OF STOCK
           </div>
 
-          {/* todo add attribute changer */}
-
           <button
               className={'add-to-cart-button button-pointer'}
-              onClick={e => this.props.onAddToCart(this.props.id, this.state.chosenAttributes, e)}
+              onClick={e => this.props.onAddToCart(this.props.id, this.state.chosenAttributes, this.props.prices, e)}
           >
             <ShoppingCartIcon color={'white'}/>
           </button>
@@ -41,10 +39,10 @@ class ImageBlock extends React.Component{
 }
 
 const mapDispatchToProps = dispatch => ({
-  onAddToCart: (productID, attributes, e) => {
+  onAddToCart: (productID, attributes, prices, e) => {
     e.stopPropagation();
     e.preventDefault();
-    dispatch(addProductToCartAction(productID, attributes));
+    dispatch(addProductToCartAction(productID, attributes, prices));
   }
 })
 
