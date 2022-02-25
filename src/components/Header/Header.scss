@@ -1,0 +1,10 @@
+header{
+  display: flex;
+  justify-content: space-around;
+  position: relative;
+
+  .section{
+    display: flex;
+    margin: 20px 40px;
+  }
+}
